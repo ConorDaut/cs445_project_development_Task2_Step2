@@ -1,0 +1,39 @@
+<!-- views/dashboard.html -->
+<div class="card">
+  <h2>User dashboard</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Account information</h3>
+      <p><strong>Company:</strong> {{data.company}}</p>
+      <p><strong>Email:</strong> {{data.email}}</p>
+      <a class="button" href="/user/account">View account</a>
+    </div>
+    <div class="card">
+      <h3>Order parts</h3>
+      <p>Select part, quantity, enter payment, checkout.</p>
+      <a class="button" href="/user/order">Order parts</a>
+    </div>
+    <div class="card">
+      <h3>Orders</h3>
+      <p>View current and previous orders.</p>
+      <a class="button" href="/user/orders">View orders</a>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <h3>Recent orders</h3>
+  <table class="table">
+    <thead><tr><th>ID</th><th>Part</th><th>Qty</th><th>Amount</th><th>Status</th><th>Created</th></tr></thead>
+    <tbody>
+    {{data.orders && data.orders.length ? data.orders.map(o => `
+      <tr>
+        <td>${o.id}</td>
+        <td>${o.part_name}</td>
+        <td>${o.quantity}</td>
+        <td>$${o.amount.toFixed(2)}</td>
+        <td class="status ${o.status}">${o.status}</td>
+        <td>${o.created_at}</td>
+      </tr>`).join('') : `<tr><td colspan="6">No orders yet.</td></tr>`}}
+    </tbody>
+  </table>
+</div>
