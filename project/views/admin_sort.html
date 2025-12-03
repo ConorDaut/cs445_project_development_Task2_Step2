@@ -1,0 +1,32 @@
+<!-- views/admin_sort.html -->
+<div class="card">
+  <h2>Sort orders</h2>
+  <form method="GET" action="/admin/sort">
+    <label>Sort by</label>
+    <select name="by" required>
+      <option value="date">Date</option>
+      <option value="company">Company</option>
+      <option value="status">Status</option>
+    </select>
+    <input type="submit" value="Apply" />
+  </form>
+</div>
+<div class="card">
+  <h3>Results</h3>
+  <table class="table">
+    <thead><tr><th>ID</th><th>User</th><th>Company</th><th>Part</th><th>Qty</th><th>Amount</th><th>Status</th><th>Created</th></tr></thead>
+    <tbody>
+      {{data.orders.length ? data.orders.map(o => `
+        <tr>
+          <td>${o.id}</td>
+          <td>${o.email}</td>
+          <td>${o.company}</td>
+          <td>${o.part_name}</td>
+          <td>${o.quantity}</td>
+          <td>$${o.amount.toFixed(2)}</td>
+          <td class="status ${o.status}">${o.status}</td>
+          <td>${o.created_at}</td>
+        </tr>`).join('') : `<tr><td colspan="8">No orders.</td></tr>`}}
+    </tbody>
+  </table>
+</div>
