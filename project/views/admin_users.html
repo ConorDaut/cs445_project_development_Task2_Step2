@@ -1,0 +1,16 @@
+<!-- views/admin_users.html -->
+<div class="card">
+  <h2>Standard users</h2>
+  <table class="table">
+    <thead><tr><th>ID</th><th>Company</th><th>Email</th><th>Created</th></tr></thead>
+    <tbody>
+      {{data.users.length ? data.users.map(u => `
+        <tr>
+          <td>${u.id}</td>
+          <td>${u.company}</td>
+          <td>${u.email}</td>
+          <td>${u.created_at}</td>
+        </tr>`).join('') : `<tr><td colspan="4">No users.</td></tr>`}}
+    </tbody>
+  </table>
+</div>
