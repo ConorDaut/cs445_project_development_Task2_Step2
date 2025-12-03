@@ -1,0 +1,18 @@
+/* public/style.css */
+body { font-family: Arial, sans-serif; margin: 0; background: #f4f6f8; }
+header { background: #1f2937; color: white; padding: 12px 20px; }
+main { padding: 20px; max-width: 900px; margin: 0 auto; }
+a.button, button, input[type="submit"] { background: #2563eb; color: #fff; border: none; padding: 10px 14px; border-radius: 6px; cursor: pointer; text-decoration: none; }
+a.button.secondary, .secondary { background: #6b7280; }
+.card { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 12px; }
+input, select { padding: 8px; border: 1px solid #d1d5db; border-radius: 6px; width: 100%; margin-bottom: 10px; }
+nav a { margin-right: 12px; color: #fff; }
+.message { background: #fee2e2; color: #991b1b; padding: 10px; border-radius: 6px; margin-bottom: 12px; }
+.table { width: 100%; border-collapse: collapse; }
+.table th, .table td { border-bottom: 1px solid #e5e7eb; padding: 8px; text-align: left; }
+.status { text-transform: capitalize; font-weight: bold; }
+.status.pending { color: #ca8a04; }
+.status.active { color: #2563eb; }
+.status.cancelled { color: #dc2626; }
+.status.complete { color: #16a34a; }
