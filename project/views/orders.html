@@ -1,0 +1,38 @@
+<!-- views/orders.html -->
+<div class="card">
+  <h2>Your orders</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Current orders</h3>
+      <table class="table">
+        <thead><tr><th>ID</th><th>Part</th><th>Qty</th><th>Amount</th><th>Status</th></tr></thead>
+        <tbody>
+        {{data.current.length ? data.current.map(o => `
+          <tr>
+            <td>${o.id}</td>
+            <td>${o.part_name}</td>
+            <td>${o.quantity}</td>
+            <td>$${o.amount.toFixed(2)}</td>
+            <td class="status ${o.status}">${o.status}</td>
+          </tr>`).join('') : `<tr><td colspan="5">No current orders.</td></tr>`}}
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <h3>Previous orders</h3>
+      <table class="table">
+        <thead><tr><th>ID</th><th>Part</th><th>Qty</th><th>Amount</th><th>Status</th></tr></thead>
+        <tbody>
+        {{data.previous.length ? data.previous.map(o => `
+          <tr>
+            <td>${o.id}</td>
+            <td>${o.part_name}</td>
+            <td>${o.quantity}</td>
+            <td>$${o.amount.toFixed(2)}</td>
+            <td class="status ${o.status}">${o.status}</td>
+          </tr>`).join('') : `<tr><td colspan="5">No previous orders.</td></tr>`}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
