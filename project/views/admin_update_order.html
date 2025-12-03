@@ -1,0 +1,30 @@
+<!-- views/admin_update_order.html -->
+<div class="card">
+  <h2>Update or modify orders</h2>
+  <form method="GET" action="/admin/update-order">
+    <label>Choose order</label>
+    <select name="order_id" required>
+      {{data.orders.map(o => `<option value="${o.id}">#${o.id} - ${o.company} - ${o.part_name} (${o.status})</option>`).join('')}}
+    </select>
+    <input type="submit" value="Select" />
+  </form>
+</div>
+{{data.selected ? `
+<div class="card">
+  <h3>Selected order #${data.selected.id}</h3>
+  <p><strong>User:</strong> ${data.selected.email} (${data.selected.company})</p>
+  <p><strong>Part:</strong> ${data.selected.part_name}</p>
+  <p><strong>Quantity:</strong> ${data.selected.quantity}</p>
+  <p><strong>Status:</strong> <span class="status ${data.selected.status}">${data.selected.status}</span></p>
+  <form method="POST" action="/admin/update-order/${data.selected.id}">
+    <label>Set status</label>
+    <select name="status" required>
+      <option value="active">Make active</option>
+      <option value="pending">Make pending</option>
+      <option value="cancelled">Make cancelled</option>
+      <option value="complete">Make complete</option>
+    </select>
+    <input type="submit" value="Update status" />
+  </form>
+</div>
+` : ''}}
