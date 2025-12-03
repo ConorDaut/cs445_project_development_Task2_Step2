@@ -1,0 +1,21 @@
+<!-- views/order.html -->
+<div class="card">
+  <h2>Order parts</h2>
+  <form method="POST" action="/user/order">
+    <label>Select part</label>
+    <select name="part_id" required>
+      {{data.parts.map(p => `<option value="${p.id}">${p.name} - $${p.price.toFixed(2)}</option>`).join('')}}
+    </select>
+    <label>Quantity</label>
+    <input type="number" name="quantity" min="1" value="1" required />
+    <h3>Payment information</h3>
+    <label>Card number</label>
+    <input type="text" name="card_number" required />
+    <label>Expiry</label>
+    <input type="text" name="expiry" placeholder="MM/YY" required />
+    <label>CVC</label>
+    <input type="text" name="cvc" required />
+    <input type="submit" value="Checkout" />
+  </form>
+  <p>After checkout, you'll return to the dashboard and your order will appear as pending.</p>
+</div>
