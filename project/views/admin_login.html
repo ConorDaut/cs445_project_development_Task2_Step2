@@ -1,0 +1,22 @@
+<!-- views/admin_login.html -->
+<div class="card">
+  <h2>Admin login</h2>
+  <form method="POST" action="/admin/login">
+    <label>Username</label>
+    <input type="text" name="username" required />
+    <label>Password</label>
+    <input type="password" name="password" required />
+    <input type="submit" value="Login" />
+  </form>
+</div>
+<div class="card">
+  <h3>Forgot password</h3>
+  <form method="POST" action="/admin/reset">
+    <label>Username</label>
+    <input type="text" name="username" required />
+    <label>New password</label>
+    <input type="password" name="new_password" required />
+    <input type="submit" value="Update password" />
+  </form>
+  <p>Admin accounts cannot be created here. Only password updates are allowed.</p>
+</div>
